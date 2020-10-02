@@ -4,8 +4,23 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "start": "sucrase-node src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "berith",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/express": "^4.17.8",
+    "@types/node": "^14.11.2",
+    "@typescript-eslint/eslint-plugin": "^4.3.0",
+    "@typescript-eslint/parser": "^4.3.0",
+    "eslint": "^7.10.0",
+    "sucrase": "^3.15.0",
+    "typescript": "^4.0.3"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "fast-glob": "^3.2.4"
+  }
 }
