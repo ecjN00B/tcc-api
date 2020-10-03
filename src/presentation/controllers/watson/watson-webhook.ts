@@ -1,6 +1,6 @@
 import { HttpResponse, HttpRequest, Controller, Request } from './watson-webhook-protocols'
-import { MissingParamError, InvalidParamError } from '../../errors'
-import { badRequest, serverError, ok, unprocessable } from '../../helpers/http-helper'
+import { MissingParamError } from '../../errors'
+import { badRequest, serverError } from '../../helpers/http-helper'
 
 export class WatsonWebhookController implements Controller {
     constructor(private readonly request: Request) {}
