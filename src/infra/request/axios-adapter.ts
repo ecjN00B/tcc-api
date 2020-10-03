@@ -15,15 +15,25 @@ export type Method =
 
 export class AxiosAdapter {
     async send (path: string, method: Method, body?: string): Promise<HttpResponse> {
-        const axiosResponse = axios({
+        return await axios({
             method: method,
             url: path,
             data: body
+        }).then(async (axiosResponse) => {
+            const response: HttpResponse = {
+                statusCode: axiosResponse.status,
+                body: axiosResponse.data
+            }
+            return response
+        }).catch((error) => {
+            if(error.response) {
+                const response: HttpResponse = {
+                    statusCode: error.response.status,
+                    body: error.response.data
+                }
+                return response
+            }
+            return null
         })
-        const response: HttpResponse = {
-            statusCode: (await axiosResponse).status,
-            body: (await axiosResponse).data
-        }
-        return response
     }
 }

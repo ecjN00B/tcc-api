@@ -19,7 +19,7 @@ export class WatsonWebhookController implements Controller {
                 method,
                 body
             )
-            return ok(request)
+            return request
         } catch (error) {
             console.error(error)
             return serverError()
