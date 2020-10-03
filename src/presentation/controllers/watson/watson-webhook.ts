@@ -1,17 +1,18 @@
 import { HttpResponse, HttpRequest, Controller, Request } from './watson-webhook-protocols'
-import { MissingParamError } from '../../errors'
 import { badRequest, serverError } from '../../helpers/http-helper'
+import { Validation } from '../../protocols'
 
 export class WatsonWebhookController implements Controller {
-    constructor(private readonly request: Request) {}
+    constructor(
+        private readonly validation: Validation,
+        private readonly request: Request
+    ) {}
 
     async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
         try {
-            const requiredFields = ['method', 'path']
-            for (const field of requiredFields) {
-                if (!httpRequest.body[field]) {
-                   return badRequest(new MissingParamError(field))
-                }
+            const error = this.validation.validate(httpRequest.body)
+            if (error) {
+                return badRequest(error)
             }
             const {path, method, body} = httpRequest.body
             const request = await this.request.send(

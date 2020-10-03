@@ -1,19 +1,19 @@
 import { HttpResponse, HttpRequest, Controller } from './watson-message-protocols'
-import { MissingParamError } from '../../errors'
 import { badRequest, serverError } from '../../helpers/http-helper'
+import { Validation } from '../../protocols'
 import { WatsonMessage } from '../../../domain/usecases/watson-webhook/watson-message'
-import { ok } from 'assert'
 
 export class WatsonMessageController implements Controller {
-    constructor(private readonly watsonMessage: WatsonMessage) {}
+    constructor(
+        private readonly validation: Validation,
+        private readonly watsonMessage: WatsonMessage
+    ) {}
 
     async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
         try {
-            const requiredFields = ['userId', 'message']
-            for (const field of requiredFields) {
-                if (!httpRequest.body[field]) {
-                   return badRequest(new MissingParamError(field))
-                }
+            const error = this.validation.validate(httpRequest.body)
+            if (error) {
+                return badRequest(error)
             }
             const {userId, message} = httpRequest.body
             const response = await this.watsonMessage.sendMessage(
