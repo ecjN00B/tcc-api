@@ -1,2 +1,2 @@
 export * from '../../protocols'
-export * from '../../../domain/usecases/watson-webhook/watson-webhook'
+export * from '../../../domain/usecases/watson/watson-webhook/watson-webhook'
