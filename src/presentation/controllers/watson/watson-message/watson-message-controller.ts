@@ -1,7 +1,7 @@
 import { HttpResponse, HttpRequest, Controller } from './watson-message-protocols'
-import { badRequest, serverError } from '../../helpers/http-helper'
-import { Validation } from '../../protocols'
-import { WatsonMessage } from '../../../domain/usecases/watson/watson-message/watson-message'
+import { badRequest, serverError } from '../../../helpers/http-helper'
+import { Validation } from '../../../protocols'
+import { WatsonMessage } from '../../../../domain/usecases/watson/watson-message/watson-message'
 
 export class WatsonMessageController implements Controller {
     constructor(

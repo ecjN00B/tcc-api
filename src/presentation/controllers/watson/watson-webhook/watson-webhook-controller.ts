@@ -1,6 +1,6 @@
 import { HttpResponse, HttpRequest, Controller, Request } from './watson-webhook-protocols'
-import { badRequest, serverError } from '../../helpers/http-helper'
-import { Validation } from '../../protocols'
+import { badRequest, serverError } from '../../../helpers/http-helper'
+import { Validation } from '../../../protocols'
 
 export class WatsonWebhookController implements Controller {
     constructor(

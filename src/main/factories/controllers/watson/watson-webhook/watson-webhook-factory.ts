@@ -1,5 +1,5 @@
 import { AxiosAdapter } from '../../../../../infra/request/axios-adapter'
-import { WatsonWebhookController } from '../../../../../presentation/controllers/watson/watson-webhook'
+import { WatsonWebhookController } from '../../../../../presentation/controllers/watson/watson-webhook/watson-webhook-controller'
 import { Controller } from '../../../../../presentation/protocols'
 import { makeWatsonWebhookValidation } from './watson-webhook-validation-factory'
 
