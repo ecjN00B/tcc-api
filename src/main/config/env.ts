@@ -7,5 +7,6 @@ export default {
   watsonAssistantUrl: process.env.ASSISTANT_URL,
   watsonAssistantVersion: process.env.ASSISTANT_VERSION,
   watsonAssistantWorkspaceId: process.env.ASSISTANT_WORKSPACE,
-  mongoUrl: process.env.MONGODB_URL
+  mongoUrl: process.env.MONGODB_URL,
+  jwtSecret: process.env.JWT_SECRET
 }
