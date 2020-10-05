@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "sucrase-node src/main/server.ts",
+    "debug": "node --inspect-brk -r sucrase/register src/main/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "berith",
