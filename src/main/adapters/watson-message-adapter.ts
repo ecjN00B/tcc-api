@@ -3,7 +3,7 @@ import AssistantV1 from 'ibm-watson/assistant/v1'
 import { IamAuthenticator } from 'ibm-watson/auth'
 
 export class WatsonMessageAdapter {
-    async sendMessage(watsonMessage) {
+    async sendMessage(userId, watsonMessage) {
         const assistant = new AssistantV1({
             authenticator: new IamAuthenticator({apikey: env.watsonAssistantApiKey}),
             serviceUrl: env.watsonAssistantUrl,
@@ -11,7 +11,7 @@ export class WatsonMessageAdapter {
         })
         return await assistant.message({
             input: {
-                text: watsonMessage.message
+                text: watsonMessage
             },
             workspaceId: env.watsonAssistantWorkspaceId
         }).then(response => ({

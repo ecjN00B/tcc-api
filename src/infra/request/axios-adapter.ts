@@ -14,7 +14,7 @@ export type Method =
   | 'unlink' | 'UNLINK'
 
 export class AxiosAdapter {
-    async send (path: string, method: Method, body?: string): Promise<HttpResponse> {
+    async send (path: string, method: Method, body?: any): Promise<HttpResponse> {
         return await axios({
             method: method,
             url: path,

@@ -8,6 +8,7 @@ export default {
   watsonAssistantVersion: process.env.ASSISTANT_VERSION,
   watsonAssistantWorkspaceId: process.env.ASSISTANT_WORKSPACE,
   mapsApiKey: process.env.MAPS_API_KEY,
+  sttApiKey: process.env.STT_API_KEY,
   mongoUrl: process.env.MONGODB_URL,
   jwtSecret: process.env.JWT_SECRET
 }
