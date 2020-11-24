@@ -14,10 +14,18 @@ export class WatsonMessageAdapter {
                 text: watsonMessage
             },
             workspaceId: env.watsonAssistantWorkspaceId
-        }).then(response => ({
-            statusCode: 200,
-            body: response.result
-        }))
+        }).then((response) => {
+            const output = response.result.output.generic
+            return {
+                statusCode: 200,
+                body: {
+                    response: output,
+                    isLocation: false,
+                    lat: 0,
+                    lng: 0
+                }
+            }
+        })
         .catch(error => ({
             statusCode: 500,
             body: error
